@@ -1,0 +1,157 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "project": "./tsconfig.json"
+  },
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "extends": [
+    "airbnb-typescript",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:eslint-comments/recommended",
+    "plugin:promise/recommended",
+    "plugin:unicorn/recommended",
+    "prettier",
+    "prettier/react",
+    "prettier/@typescript-eslint"
+  ],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "plugins": [
+    "react",
+    "prettier",
+    "react-hooks",
+    "@typescript-eslint",
+    "eslint-comments",
+    "promise",
+    "unicorn",
+    "simple-import-sort"
+  ],
+  "rules": {
+    // general rules
+    "camelcase": "off",
+    "no-prototype-builtins": "off",
+    "promise/catch-or-return": "off",
+    "class-methods-use-this": "off",
+    "no-underscore-dangle": "off",
+    "no-unused-vars": "off", // handled in ts
+    "no-restricted-syntax": [
+      "error",
+      "ForInStatement",
+      "LabeledStatement",
+      "WithStatement"
+    ],
+    "no-use-before-define": "off",
+
+    // react
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "react/prop-types": "off",
+    "react/jsx-pascal-case": "error", // PascalCase naming
+    "react/destructuring-assignment": "off", // Too restrictive: https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/destructuring-assignment.md
+    "react/jsx-props-no-spreading": "off", // No jsx extension: https://github.com/facebook/create-react-app/issues/87#issuecomment-234627904
+    "react/jsx-filename-extension": ["error", { "extensions": [".tsx"] }],
+
+    // naming convetions
+    "unicorn/no-null": "off",
+    "unicorn/no-fn-reference-in-iterator": "off",
+    "unicorn/filename-case": [
+      "error",
+      {
+        "cases": {
+          "pascalCase": true,
+          "kebabCase": false,
+          "snakeCase": false,
+          "camelCase": true
+        },
+        "ignore": [
+          // "/^(\[\w+\]\.tsx?|\d+-\w+\.(ts|js))$/",
+          "next-env.d.ts"
+        ]
+      }
+    ],
+    "unicorn/prevent-abbreviations": "off", // Common abbreviations are known and readable
+    "unicorn/consistent-function-scoping": "off",
+    "unicorn/no-abusive-eslint-disable": "off",
+    "eslint-comments/no-unlimited-disable": "off",
+    "eslint-comments/disable-enable-pair": "off",
+    "lines-between-class-members": "off",
+
+    // imports
+    "simple-import-sort/exports": "error",
+    "simple-import-sort/imports": [
+      "error",
+      {
+        "groups": [
+          // Side effect imports first
+          ["^\\u0000"],
+          // React first, then any other packages
+          ["^react$", "^(?!@app)@?\\w"],
+          // Absolute imports (doesn"t start with .)
+          ["^[^.]"],
+          // Relative imports
+          [
+            // ../whatever/
+            "^\\.\\./(?=.*/)",
+            // ../
+            "^\\.\\./",
+            // ./whatever/
+            "^\\./(?=.*/)",
+            // Anything that starts with a dot
+            "^\\."
+          ],
+          // Asset imports
+          ["^.+\\.(html|scss|sass|css|json|gql|graphql|md)$"]
+        ]
+      }
+    ],
+    "sort-imports": "off", // use above
+    "import/order": "off", // use above
+    "import/no-default-export": "off",
+    "import/prefer-default-export": "off",
+    "import/extensions": "off",
+
+    // a11y
+    "jsx-a11y/accessible-emoji": "off",
+    "jsx-a11y/anchor-is-valid": "off",
+    "jsx-a11y/control-has-associated-label": "off",
+    "jsx-a11y/label-has-associated-control": "off",
+
+    // typescript
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/no-var-requires": "off",
+    "@typescript-eslint/no-use-before-define": [
+      "error",
+      {
+        "functions": false,
+        "classes": true,
+        "variables": true,
+        "typedefs": true
+      }
+    ],
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        "ignoreRestSiblings": true,
+        "argsIgnorePattern": "^_",
+        "varsIgnorePattern": "^_"
+      }
+    ],
+    "@typescript-eslint/naming-convention": "off",
+    "@typescript-eslint/lines-between-class-members": [
+      "error",
+      "always",
+      { "exceptAfterOverload": true, "exceptAfterSingleLine": true }
+    ]
+  }
+}
