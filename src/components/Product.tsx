@@ -32,7 +32,11 @@ const Product: FC<Props> = ({ product: { images, title, priceRange }, z }) => {
   const image = images.edges[imageIndex].node
   const price = priceRange.minVariantPrice.amount
 
-  const exeTitle = `${title.slice(0, 25).replace(/\s/, '_').toLowerCase()}.exe`
+  const exeTitle = `${title
+    .replace(/\s/g, '_') // replace spaces with _
+    .replace(/\W/g, '') // remove non-alphanumeric
+    .slice(0, 25) // chomp down to len == 25
+    .toLowerCase()}.exe` // add suffix and lowercase it
 
   const x = useRef(Math.round(Math.random() * 100) - 50)
   const y = useRef(Math.round(Math.random() * 100) - 50)
