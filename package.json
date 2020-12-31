@@ -16,7 +16,7 @@
     "dev:next": "NODE_OPTIONS='--inspect' next dev",
     "dev:codegen": "yarn codegen --watch",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "codegen": "graphql-codegen --config codegen.js",
+    "codegen": "graphql-codegen --config .graphqlrc.js",
     "--prod--": "",
     "prenext": "yarn codegen",
     "next": "next",
@@ -73,7 +73,6 @@
   },
   "devDependencies": {
     "@graphql-codegen/cli": "1.20.0",
-    "@graphql-codegen/introspection": "^1.18.1",
     "@graphql-codegen/typescript": "1.19.0",
     "@graphql-codegen/typescript-document-nodes": "1.17.9",
     "@graphql-codegen/typescript-graphql-files-modules": "1.18.1",
