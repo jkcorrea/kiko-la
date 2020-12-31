@@ -1,10 +1,10 @@
-import React, { FC } from 'react'
+import React, { FC, ReactNode } from 'react'
 import Link from 'next/link'
 import styled from 'styled-components'
 
 interface Props {
   title?: string
-  message?: string
+  message?: ReactNode
 }
 
 const Background = styled.div`
