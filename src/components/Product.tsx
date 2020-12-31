@@ -39,7 +39,7 @@ const Product: FC<Props> = ({ product: { images, title, priceRange }, z }) => {
     .toLowerCase()}.exe` // add suffix and lowercase it
 
   const x = useRef(Math.round(Math.random() * 100) - 50)
-  const y = useRef(Math.round(Math.random() * 100) - 50)
+  const y = useRef(Math.round(Math.random() * 40) - 60)
 
   const [containerStyle, setContainerStyle] = useDirectStyle()
 
