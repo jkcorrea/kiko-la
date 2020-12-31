@@ -14,6 +14,7 @@ module.exports = {
       },
     },
   ],
+  documents: ['src/**/*.{ts,tsx}'],
   extensions: {
     endpoints: {
       default: {

@@ -10,7 +10,7 @@ import {
 } from 'react95'
 import styled from 'styled-components'
 
-import { GetProductsQuery } from '@/graphql/shopify'
+import { GetProductsQuery } from '@/generated/graphql'
 
 interface Props {
   product: GetProductsQuery['products']['edges'][number]['node']
@@ -73,13 +73,16 @@ const Product: FC<Props> = ({ product: { images, title, priceRange }, z }) => {
           {images.edges.length > 0 ? (
             <img
               className="object-cover object-center w-full h-1/2 block"
-              src={image.src}
+              src={image.originalSrc}
               alt={title}
             />
           ) : null}
         </WindowContent>
         <Panel className="w-full text-right px-2" variant="well">
-          <p>${price}</p>
+          <div className="flex justify-between">
+            <p>Price:</p>
+            <p>${price}</p>
+          </div>
         </Panel>
       </Window>
     </Container>

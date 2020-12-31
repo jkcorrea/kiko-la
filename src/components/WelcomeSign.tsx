@@ -10,10 +10,10 @@ const WelcomeSign = () => (
       <span>kiko-la.exe</span>
     </WindowHeader>
     <WindowContent className="w-full h-full p-64 flex justify-center items-center">
-      <p className="text-center">
+      <div className="text-center">
         <h1 className="text-2xl">Welcome to</h1>
         <h2 className="text-4xl">Kiko L.A. !</h2>
-      </p>
+      </div>
     </WindowContent>
   </Window>
 )
