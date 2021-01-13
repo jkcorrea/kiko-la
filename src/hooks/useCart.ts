@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { createContainer } from 'unstated-next'
 import { DeepPartial } from 'utility-types'
 
-import { Checkout } from '@/generated/graphql'
+import { Checkout } from '@/graphql'
 
 interface CartContainer {
   isCartOpen: boolean

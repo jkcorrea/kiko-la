@@ -16,6 +16,7 @@ import 'tailwindcss/tailwind.css'
 const GlobalStyle = createGlobalStyle`
   body {
     overscroll-behavior: none;
+    background: black;
   }
 
   @font-face {
