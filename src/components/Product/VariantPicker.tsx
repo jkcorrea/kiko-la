@@ -17,8 +17,9 @@ export const VariantPicker = ({
   setVariantIndex,
 }: Props) => (
   <Fieldset label="Options">
-    {variants.map(({ node: { title } }, i) => (
+    {variants.map(({ node: { title, id } }, i) => (
       <Radio
+        key={id}
         checked={variantIndex === i}
         label={title}
         onChange={() => setVariantIndex(i)}
