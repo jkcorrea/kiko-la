@@ -4,8 +4,6 @@ var {
   STOREFRONT_API_HEADERS,
 } = require('./src/lib/constants')
 
-console.log(__dirname)
-
 module.exports = {
   schema: [
     {
@@ -14,7 +12,7 @@ module.exports = {
       },
     },
   ],
-  documents: ['src/**/*.{ts,tsx}'],
+  documents: ['src/queries/**/**.{gql,graphql}'],
   extensions: {
     endpoints: {
       default: {
@@ -25,7 +23,7 @@ module.exports = {
     codegen: {
       overwrite: true,
       generates: {
-        'src/generated/graphql.ts': {
+        'src/graphql.ts': {
           plugins: [
             'typescript',
             'typescript-operations',

@@ -1,0 +1,28 @@
+fragment ProductFields on Product {
+  id
+  title
+  descriptionHtml
+  handle
+  variants(first: 10) {
+    edges {
+      node {
+        ...VariantFields
+      }
+    }
+  }
+  priceRange {
+    minVariantPrice {
+      amount
+    }
+    maxVariantPrice {
+      amount
+    }
+  }
+  images(first: 10) {
+    edges {
+      node {
+        originalSrc
+      }
+    }
+  }
+}

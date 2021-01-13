@@ -1,0 +1,14 @@
+query getProducts($first: Int = 25, $cursor: String) {
+  products(first: $first, after: $cursor, sortKey: UPDATED_AT) {
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+    }
+    edges {
+      cursor
+      node {
+        ...ProductFields
+      }
+    }
+  }
+}

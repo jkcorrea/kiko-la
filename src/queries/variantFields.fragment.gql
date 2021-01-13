@@ -1,0 +1,10 @@
+fragment VariantFields on ProductVariant {
+  id
+  title
+  image {
+    originalSrc
+  }
+  priceV2 {
+    amount
+  }
+}
