@@ -2,9 +2,10 @@ import React, { FC, useEffect, useState } from 'react'
 import { directstyled, useDirectStyle } from 'direct-styled'
 import styled from 'styled-components'
 
-import Product from '@/components/Product'
-import WelcomeSign from '@/components/WelcomeSign'
-import { GetProductsQuery } from '@/generated/graphql'
+import { GetProductsQuery } from '@/graphql'
+
+import { ProductContainer } from './Product'
+import WelcomeSign from './WelcomeSign'
 
 const SCENE_PERSPECTIVE = 1
 const PERSPECTIVE_SHIFT = 2
@@ -91,7 +92,7 @@ const Scene3D: FC<Props> = ({ products }) => {
       >
         <Scene style={sceneStyle} className="absolute top-0 h-screen w-full">
           {products.map(({ node: p }, ix) => (
-            <Product
+            <ProductContainer
               // addVariantToCart={addVariantToCart}
               key={p.id}
               product={p}
