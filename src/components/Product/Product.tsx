@@ -91,6 +91,7 @@ export const Product: FC<Props> = ({
         ) : null}
 
         <div className="px-2">
+          {/* eslint-disable-next-line react/no-danger */}
           <div dangerouslySetInnerHTML={{ __html: descriptionHtml }} />
         </div>
       </WindowContent>

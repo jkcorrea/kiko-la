@@ -1,10 +1,14 @@
 import React, { FC } from 'react'
+import { LoadingIndicator, Window } from 'react95'
 
 const Loading: FC = () => (
-  <div className="w-screen h-screen flex justify-center items-center text-center text-white">
-    <div className="bg-black bg-opacity-75 py-4 px-8">
-      <h1 className="text-3xl">Loading...</h1>
-    </div>
+  <div className="w-screen h-screen flex justify-center items-center">
+    <Window>
+      <div className="px-6 py-1 space-y-3">
+        <p className="text-center">Loading...</p>
+        <LoadingIndicator isLoading />
+      </div>
+    </Window>
   </div>
 )
 
