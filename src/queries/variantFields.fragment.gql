@@ -2,7 +2,7 @@ fragment VariantFields on ProductVariant {
   id
   title
   image {
-    originalSrc
+    ...ImageFields
   }
   priceV2 {
     amount

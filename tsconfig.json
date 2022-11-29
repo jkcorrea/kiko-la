@@ -19,5 +19,11 @@
     }
   },
   "exclude": ["node_modules"],
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/lib/constants.js"]
+  "include": [
+    "next-env.d.ts",
+    "typings/**/*.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "src/lib/constants.js"
+  ]
 }

@@ -1,0 +1,4 @@
+fragment ImageFields on Image {
+  originalSrc
+  transformedSrc(maxHeight: 150, maxWidth: 150)
+}

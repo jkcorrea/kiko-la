@@ -1,4 +1,5 @@
 import React, { FC, useState } from 'react'
+import ImageGallery from 'react-image-gallery'
 import {
   Button,
   Fieldset,
@@ -9,13 +10,23 @@ import {
   WindowHeader,
 } from 'react95'
 
-import { ProductFieldsFragment } from '@/graphql'
+import { ImageFieldsFragment, ProductFieldsFragment } from '@/graphql'
 
 import { VariantPicker } from './VariantPicker'
+
+import 'react-image-gallery/styles/css/image-gallery.css'
 
 interface Props {
   product: ProductFieldsFragment
 }
+
+const shopifyImgToGalleryImg = ({
+  originalSrc,
+  transformedSrc,
+}: ImageFieldsFragment) => ({
+  original: originalSrc,
+  thumbnail: transformedSrc,
+})
 
 export const Product: FC<Props> = ({
   product: {
@@ -29,10 +40,6 @@ export const Product: FC<Props> = ({
     descriptionHtml,
   },
 }) => {
-  const [imageIndex, _setImageIndex] = useState(0)
-  const [imageUrl, setImageUrl] = useState(
-    images.edges[imageIndex].node.originalSrc,
-  )
   const [variantIndex, _setVariantIndex] = useState<number>(null)
   const [priceLabel, setPriceLabel] = useState(
     minPrice !== maxPrice ? `$${minPrice} - $${maxPrice}` : `$${minPrice}`,
@@ -47,20 +54,24 @@ export const Product: FC<Props> = ({
   const setVariantIndex = (i: number) => {
     const {
       priceV2: { amount },
-      image,
     } = variants[i].node
 
     setPriceLabel(`$${amount}`)
-    setImageUrl(image.originalSrc)
     _setVariantIndex(i)
   }
+
+  const allImages = [
+    ...images.edges.map(img => shopifyImgToGalleryImg(img.node)),
+    // Append variant images
+    ...variants.map(v => shopifyImgToGalleryImg(v.node.image)),
+  ]
 
   return (
     <Window>
       <WindowHeader>
         <span>{exeTitle}</span>
       </WindowHeader>
-      <Toolbar>
+      <Toolbar className="asdf">
         <Button variant="menu" size="sm">
           File
         </Button>
@@ -73,13 +84,15 @@ export const Product: FC<Props> = ({
       </Toolbar>
       <WindowContent className="h-64 overflow-y-auto space-y-5 flex flex-col">
         <Fieldset label="Gallery" className="w-full h-32 self-center">
-          {images.edges.length > 0 ? (
-            <img
-              className="block h-full w-full object-contain object-center"
-              src={imageUrl}
-              alt={title}
-            />
-          ) : null}
+          <ImageGallery
+            items={allImages}
+            showThumbnails={false}
+            useBrowserFullscreen={false}
+            showIndex={false}
+            showNav={false}
+            showPlayButton={false}
+            showFullscreenButton={false}
+          />
         </Fieldset>
 
         {variants.length > 1 ? (

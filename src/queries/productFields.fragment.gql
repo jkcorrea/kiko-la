@@ -21,7 +21,7 @@ fragment ProductFields on Product {
   images(first: 10) {
     edges {
       node {
-        originalSrc
+        ...ImageFields
       }
     }
   }
